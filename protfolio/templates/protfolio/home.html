@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1>MEHEDI HASAN</h1>
+                <p class="intro-text">A CSE student passionate about leveraging Python to solve complex challenges. My foundational understanding of computer networking enables me to develop applications with a holistic and efficient design.</p>
+                <a href="https://github.com/mehedihasansakib" class="btn btn-dark btn-get-started">Visite GitHub</a>
+            </div>
+            <div class="col-lg-6">
+                <!-- You can add a hero image here if needed -->
+                <img src="{% static 'protfolio/images/pff1.png' %}" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Skills Section -->
+<div class="container py-5" id="skills">
+    <div class="text-center mb-5">
+        <h2 class="display-5 fw-bold mb-3 text-white">My Skills</h2>
+        <p class="text-light lead">Technologies I work with daily</p>
+    </div>
+    
+    <div class="row g-4">
+        {% for skill in skills %}
+        <div class="col-md-6 col-lg-4">
+            <div class="skill-card p-4 rounded-4 shadow h-100" style="background-color: #1a1a2e;">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="skill-icon me-3">
+                        {% if skill.name == "Python" %}
+                        <i class="fab fa-python fa-2x text-primary"></i>
+                        {% elif skill.name == "Django" %}
+                        <i class="fas fa-leaf fa-2x text-success"></i>
+                        {% elif skill.name == "Computer Network" %}
+                        <i class="fas fa-network-wired fa-2x text-info"></i>
+                        {% elif skill.name == "Ruby On Rails" %}
+                        <i class="fas fa-gem fa-2x text-danger"></i>
+                        {% elif skill.name == "Ruby" %}
+                        <i class="fas fa-gem fa-2x text-danger"></i>
+                        {% elif skill.name == "Java" %}
+                        <i class="fab fa-java fa-2x text-warning"></i>
+                        {% else %}
+                        <i class="fas fa-code fa-2x text-secondary"></i>
+                        {% endif %}
+                    </div>
+                    <h5 class="mb-0 fw-bold text-white">{{ skill.name }}</h5>
+                </div>
+                
+                <div class="progress-wrapper">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-light small">Proficiency</span>
+                        <span class="text-white fw-bold">{{ skill.proficiency }}%</span>
+                    </div>
+                    <div class="progress" style="height: 8px; background-color: #2a2a3a;">
+                        <div class="progress-bar bg-gradient" 
+                             role="progressbar" 
+                             style="width: {{ skill.proficiency }}%; background: linear-gradient(90deg, #4e54c8, #8f94fb);" 
+                             aria-valuenow="{{ skill.proficiency }}" 
+                             aria-valuemin="0" 
+                             aria-valuemax="100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<style>
+    /* Projects Section Styling - Dark Theme */
+    #recent-work {
+        padding: 4rem 2rem;
+        background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+        backdrop-filter: blur(8px); /* Creates frosted glass effect */
+        
+        
+    }
+     #recent-work .container {
+        max-width: 100%;
+        padding: 0 15px; /* Maintain some side padding */
+    }
+    
+    #recent-work h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 3rem;
+        color: #0cc8eeff;
+        position: relative;
+    }
+    
+    #recent-work h2::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: #00b4d8; /* Cyan accent */
+        margin: 15px auto;
+    }
+    
+    .project-card {
+        border: none;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        transition: all 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9); /* Dark card background */
+        border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+    }
+    
+    .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 180, 216, 0.3);
+        border-color: rgba(0, 180, 216, 0.3);
+    }
+    
+    .project-card img {
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+        filter: grayscale(20%) contrast(110%);
+    }
+    
+    .project-card:hover img {
+        transform: scale(1.05);
+        filter: grayscale(0%) contrast(120%);
+    }
+    
+    .card-body {
+        padding: 1.75rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+    
+    .project-card h5 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #d63057ff;
+        margin-bottom: 0.75rem;
+    }
+    
+    .project-card p {
+        color: #b0b0b0;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+    }
+    
+    .project-card .btn {
+        align-self: flex-start;
+        background-color: transparent;
+        color: #00b4d8;
+        border: 2px solid #00b4d8;
+        padding: 0.5rem 1.75rem;
+        border-radius: 50px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        margin-top: auto;
+    }
+    
+    .project-card .btn:hover {
+        background-color: #00b4d8;
+        color: #000000;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 180, 216, 0.4);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        #recent-work {
+            padding: 3rem 0;
+            background-color: rgba(0, 0, 0, 0.85); /* Less transparent on mobile */
+        }
+        
+        #recent-work h2 {
+            font-size: 2rem;
+        }
+        
+        .col-md-4 {
+            margin-bottom: 2rem;
+        }
+        
+        .project-card {
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+    }
+</style>
+
+<div class="container mt-5 mb-0 " id="recent-work">
+    <h2 class="text-center mb-5">MY Projects</h2>
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-md-4 mb-4 d-flex">
+            <div class="card project-card w-100">
+                <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}">
+                <div class="card-body">
+                    <h5>{{ project.title }}</h5>
+                    <p>{{ project.description }}</p>
+                    <a href="{{ project.url }}" class="btn btn-primary mt-auto">Explore Project →</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
