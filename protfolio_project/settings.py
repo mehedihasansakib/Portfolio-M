@@ -29,9 +29,7 @@ SECRET_KEY = 'django-insecure-2cp5*soyduto$(v%9t(=nuno*!$8ff5@gi$pgv7=4-bj4*vw7)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://portfoliomehedihasan.onrender.com','portfoliomehedihasan.onrender.com']
-
-
+ALLOWED_HOSTS = ['portfoliomehedihasan.onrender.com', 'localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
@@ -52,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 ]
 
-
+SITE_ID = 1 
 
 
 MIDDLEWARE = [
